@@ -1,0 +1,29 @@
+header {
+    width: 100%;
+    display: flex;
+    background-color: var(--primary);
+}
+
+.logo {
+    height: 4rem;
+    width: 4rem;
+    margin-left: 0.2rem;
+}
+
+.avatar-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar {
+    height: 3.5rem;
+    width: 3.5rem;
+    margin-right: 2rem;
+    border-radius: 50%;
+}
+
+.grayscale {
+    filter: grayscale(1);
+}
