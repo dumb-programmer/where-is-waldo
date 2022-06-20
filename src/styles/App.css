@@ -1,0 +1,10 @@
+.App{
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 0.1fr 1fr 0.1fr;
+}
+
+.puzzle-img{
+    height: 100%;
+    width: 100%;
+}
