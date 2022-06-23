@@ -1,0 +1,19 @@
+.drop-down {
+    background-color: rgba(184,255,249, 0.8);
+    position: relative;
+    top: -25px;
+    list-style: none;
+    width: 7rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease-out;
+}
+
+.drop-down li {
+    border-bottom: 2px solid var(--primary);
+    cursor: pointer;
+    padding: 5px;
+}
+
+.drop-down li:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}

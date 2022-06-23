@@ -1,0 +1,20 @@
+.cursor-container {
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: flex;
+    min-height: 100px;
+    min-width: 100px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.circle {
+    height: 60px;
+    width: 60px;
+    background-color: var(--secondary);
+    border-radius: 50%;
+    opacity: 0.5;
+}
