@@ -1,14 +1,16 @@
 import "../styles/Header.css";
-import logo from "../assets/logo.png";
-import waldo from "../assets/waldo.png";
-import odlaw from "../assets/odlaw.png";
-import wizard from "../assets/wizard_whitebeard.png";
+import uniqid from "uniqid";
+import logo from "../assets/images/logo.png";
+import waldo from "../assets/images/waldo.png";
+import odlaw from "../assets/images/odlaw.png";
+import wizard from "../assets/images/wizard_whitebeard.png";
+import React from 'react';
 
 const Header = () => {
   const avatars = [
-    { src: waldo, alt: "Waldo" },
-    { src: odlaw, alt: "Odlaw" },
-    { src: wizard, alt: "Wizard Whitebeard" },
+    { id: uniqid(), src: waldo, alt: "Waldo" },
+    { id: uniqid(), src: odlaw, alt: "Odlaw" },
+    { id: uniqid(), src: wizard, alt: "Wizard Whitebeard" },
   ];
 
   return (
@@ -18,7 +20,12 @@ const Header = () => {
       </div>
       <div className="avatar-container">
         {avatars.map((avatar) => (
-          <img src={avatar.src} alt={avatar.alt} className="avatar"/>
+          <img
+            key={avatar.id}
+            src={avatar.src}
+            alt={avatar.alt}
+            className="avatar"
+          />
         ))}
       </div>
     </header>
