@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DropDown from "./DropDown";
 import "../styles/Cursor.css";
 
-const Cursor = ({ coordinates, setIsClicked }) => {
+const Cursor = ({ coordinates, setIsClicked, selected, setSelected, setWin }) => {
   const { x, y } = coordinates;
 
   const [openDropDown, setOpenDropDown] = useState(false);
@@ -25,7 +25,14 @@ const Cursor = ({ coordinates, setIsClicked }) => {
       onMouseLeave={onMouseOut}
     >
       <div className="circle"></div>
-      {openDropDown && <DropDown />}
+      {openDropDown && (
+        <DropDown
+          cursor_pos={coordinates}
+          selected={selected}
+          setSelected={setSelected}
+          setWin={setWin}
+        />
+      )}
     </div>
   );
 };
