@@ -2,10 +2,22 @@ import React, { useState } from "react";
 import DropDown from "./DropDown";
 import "../styles/Cursor.css";
 
-const Cursor = ({ coordinates, setIsClicked, selected, setSelected, setWin }) => {
+const Cursor = ({
+  coordinates,
+  setIsClicked,
+  selected,
+  setSelected,
+  setWin,
+}) => {
   const { x, y } = coordinates;
 
   const [openDropDown, setOpenDropDown] = useState(false);
+  const [items, setItems] = useState([
+    "Waldo",
+    "Wilma",
+    "Odlaw",
+    "Wizard Whitebeard",
+  ]);
 
   const onClick = () => {
     setIsClicked((prevState) => !prevState);
@@ -27,6 +39,8 @@ const Cursor = ({ coordinates, setIsClicked, selected, setSelected, setWin }) =>
       <div className="circle"></div>
       {openDropDown && (
         <DropDown
+          items={items}
+          setItems={setItems}
           cursor_pos={coordinates}
           selected={selected}
           setSelected={setSelected}

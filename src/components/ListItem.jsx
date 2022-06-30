@@ -4,6 +4,7 @@ import { getData } from "../firebase";
 const ListItem = ({
   caption,
   items,
+  setItems,
   index,
   cursor_pos,
   selected,
@@ -17,17 +18,24 @@ const ListItem = ({
       data.current = snapshot;
     });
   }, []);
+
   const onClick = () => {
     const character = items[index];
     const position_of_character = data.current[character];
+    console.log(position_of_character);
     if (!selected[character]) {
-      for (const position in position_of_character) {
-        if (position.x === cursor_pos.x && position.y === cursor_pos.y) {
+      for (const position of position_of_character) {
+        if (cursor_pos.x === +position.x && cursor_pos.y === +position.y) {
+          console.log("matched");
           const newState = { ...selected };
           newState[character] = true;
           setSelected(newState);
 
-          if (newState.every((item) => item === true)) {
+          setItems((prevState) =>
+            prevState.filter((item) => item !== character)
+          );
+
+          if (Object.values(newState).every((item) => item === true)) {
             setWin(true);
           }
         }
