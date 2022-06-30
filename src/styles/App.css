@@ -1,7 +1,7 @@
 .App {
     height: 100vh;
     display: grid;
-    grid-template-rows: 0.1fr 1fr 0.1fr;
+    grid-template-rows: 0.1fr 100%;
 }
 
 .puzzle-img {
