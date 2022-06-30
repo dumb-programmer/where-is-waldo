@@ -18,10 +18,9 @@ header {
 }
 
 .avatar {
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 3.65rem;
+    width: 3.65rem;
     margin-right: 2rem;
-    border-radius: 50%;
 }
 
 .grayscale {
