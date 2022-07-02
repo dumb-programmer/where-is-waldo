@@ -3,6 +3,7 @@ import "./styles/App.css";
 import Header from "./components/Header.jsx";
 import Cursor from "./components/Cursor.jsx";
 import WinnerScreen from "./components/WinnerScreen.jsx";
+import Feedback from "./components/Feedback.jsx";
 import { initFirebase } from "./firebase";
 import puzzleImage from "./assets/images/puzzle.jpg";
 
@@ -17,6 +18,8 @@ function App() {
     Odlaw: false,
   });
   const [win, setWin] = useState(false);
+  const [showFound, setShowFound] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   useEffect(() => {
     const main = document.querySelector("main");
@@ -55,8 +58,12 @@ function App() {
               selected={selected}
               setSelected={setSelected}
               setWin={setWin}
+              setShowFound={setShowFound}
+              setShowError={setShowError}
             />
           )}
+          {showError && <Feedback error={true} setShowError={setShowError}/>}
+          {showFound && <Feedback setShowFound={setShowFound}/>}
         </main>
       )}
     </div>

@@ -8,6 +8,8 @@ const Cursor = ({
   selected,
   setSelected,
   setWin,
+  setShowFound,
+  setShowError,
 }) => {
   const { x, y } = coordinates;
 
@@ -45,6 +47,8 @@ const Cursor = ({
           selected={selected}
           setSelected={setSelected}
           setWin={setWin}
+          setShowFound={setShowFound}
+          setShowError={setShowError}
         />
       )}
     </div>

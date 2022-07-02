@@ -10,6 +10,8 @@ const DropDown = ({
   selected,
   setSelected,
   setWin,
+  setShowFound,
+  setShowError,
 }) => {
   return (
     <ul className="drop-down">
@@ -24,6 +26,8 @@ const DropDown = ({
           selected={selected}
           setSelected={setSelected}
           setWin={setWin}
+          setShowFound={setShowFound}
+          setShowError={setShowError}
         />
       ))}
     </ul>
