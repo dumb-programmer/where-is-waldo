@@ -1,0 +1,27 @@
+.feedback-container {
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 0.3rem;
+    padding: 0.8rem;
+    width: 12rem;
+    background-color: #47B5FF;
+    box-shadow: 1px 2px 35px -2px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px 2px 35px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 2px 35px -2px rgba(0, 0, 0, 0.75);
+}
+
+.icon {
+    height: 25px;
+    width: 25px;
+}
+
+.check-icon {
+    background-image: url("../assets/images/check.png");
+}
+
+.cross-icon {
+    background-image: url("../assets/images/cross.png");
+}
