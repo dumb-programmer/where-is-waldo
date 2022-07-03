@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.1aacf073.css",
-    "main.js": "/static/js/main.080a7c6b.js",
-    "static/media/puzzle.jpg": "/static/media/puzzle.29270c1997a6b000991e.jpg",
-    "static/media/logo.png": "/static/media/logo.19d376aa4f0118a358a2.png",
-    "static/media/wilma.png": "/static/media/wilma.1c88922db075c9b300dc.png",
-    "static/media/waldo.png": "/static/media/waldo.228591c6e2186acc2827.png",
-    "static/media/wizard_whitebeard.png": "/static/media/wizard_whitebeard.1d51ced752db224318a1.png",
-    "static/media/odlaw.png": "/static/media/odlaw.5645abf20f74febe64a9.png",
-    "index.html": "/index.html",
-    "main.1aacf073.css.map": "/static/css/main.1aacf073.css.map",
-    "main.080a7c6b.js.map": "/static/js/main.080a7c6b.js.map"
+    "main.css": "/where-is-waldo/static/css/main.1aacf073.css",
+    "main.js": "/where-is-waldo/static/js/main.2a5cd52c.js",
+    "static/media/puzzle.jpg": "/where-is-waldo/static/media/puzzle.29270c1997a6b000991e.jpg",
+    "static/media/logo.png": "/where-is-waldo/static/media/logo.19d376aa4f0118a358a2.png",
+    "static/media/wilma.png": "/where-is-waldo/static/media/wilma.1c88922db075c9b300dc.png",
+    "static/media/waldo.png": "/where-is-waldo/static/media/waldo.228591c6e2186acc2827.png",
+    "static/media/wizard_whitebeard.png": "/where-is-waldo/static/media/wizard_whitebeard.1d51ced752db224318a1.png",
+    "static/media/odlaw.png": "/where-is-waldo/static/media/odlaw.5645abf20f74febe64a9.png",
+    "index.html": "/where-is-waldo/index.html",
+    "main.1aacf073.css.map": "/where-is-waldo/static/css/main.1aacf073.css.map",
+    "main.2a5cd52c.js.map": "/where-is-waldo/static/js/main.2a5cd52c.js.map"
   },
   "entrypoints": [
     "static/css/main.1aacf073.css",
-    "static/js/main.080a7c6b.js"
+    "static/js/main.2a5cd52c.js"
   ]
 }
