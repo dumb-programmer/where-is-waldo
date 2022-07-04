@@ -4,6 +4,7 @@ import "../styles/Cursor.css";
 
 const Cursor = ({
   coordinates,
+  data,
   setIsClicked,
   selected,
   setSelected,
@@ -44,6 +45,7 @@ const Cursor = ({
           items={items}
           setItems={setItems}
           cursor_pos={coordinates}
+          data={data}
           selected={selected}
           setSelected={setSelected}
           setWin={setWin}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import uniqid from "uniqid";
 import ListItem from "./ListItem.jsx";
 import "../styles/DropDown.css";
@@ -7,6 +7,7 @@ const DropDown = ({
   items,
   setItems,
   cursor_pos,
+  data,
   selected,
   setSelected,
   setWin,
@@ -28,6 +29,7 @@ const DropDown = ({
           setWin={setWin}
           setShowFound={setShowFound}
           setShowError={setShowError}
+          data={data}
         />
       ))}
     </ul>

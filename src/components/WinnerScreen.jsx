@@ -1,11 +1,7 @@
 import React from "react";
 
 const WinnerScreen = () => {
-  return (
-    <main style={{ cursor: "auto" }}>
-      <h1>Winner Screen</h1>
-    </main>
-  );
+  return <h1>Winner Screen</h1>;
 };
 
 export default WinnerScreen;
