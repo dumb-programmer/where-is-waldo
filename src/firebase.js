@@ -21,7 +21,7 @@ const getData = async () => {
     onValue(
       dbRef,
       (snapshot) => {
-        resolve(snapshot.val());
+        resolve(snapshot.val()["characters"]);
       },
       (error) => reject(console.log(error))
     );
