@@ -6,8 +6,9 @@ import wilma from "../assets/images/wilma.png";
 import odlaw from "../assets/images/odlaw.png";
 import wizard from "../assets/images/wizard_whitebeard.png";
 import React from "react";
+import Timer from "./Timer";
 
-const Header = ({ selected, win }) => {
+const Header = ({ selected, win, setFinalTime }) => {
   const avatars = [
     { id: uniqid(), src: waldo, alt: "Waldo" },
     { id: uniqid(), src: wilma, alt: "Wilma" },
@@ -31,6 +32,7 @@ const Header = ({ selected, win }) => {
             />
           ))}
       </div>
+      <Timer win={win} setFinalTime={setFinalTime} />
     </header>
   );
 };

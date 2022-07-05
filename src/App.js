@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./styles/App.css";
 import Header from "./components/Header.jsx";
 import Main from "./components/Main.jsx";
-import Footer from "./components/Footer.jsx";
 import { initFirebase } from "./firebase";
 
 function App() {
@@ -13,6 +12,7 @@ function App() {
     Odlaw: false,
   });
   const [win, setWin] = useState(false);
+  const [finalTime, setFinalTime] = useState(null);
 
   useEffect(() => {
     initFirebase();
@@ -20,12 +20,13 @@ function App() {
 
   return (
     <div className="App">
-      <Header selected={selected} win={win} />
+      <Header selected={selected} win={win} setFinalTime={setFinalTime}/>
       <Main
         selected={selected}
         setSelected={setSelected}
         win={win}
         setWin={setWin}
+        finalTime={finalTime}
       />
     </div>
   );
