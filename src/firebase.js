@@ -1,5 +1,14 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, onValue, ref } from "firebase/database";
+import {
+  getDatabase,
+  onValue,
+  ref,
+  push,
+  set,
+  orderByChild,
+  query,
+  get,
+} from "firebase/database";
 
 const initFirebase = () => {
   const firebaseConfig = {
@@ -28,4 +37,21 @@ const getData = async () => {
   });
 };
 
-export { initFirebase, getData };
+const submitData = (data) => {
+  const db = getDatabase();
+  const leaderboardRef = ref(db, "leaderboard/");
+  set(push(leaderboardRef), {
+    name: `${data.name}`,
+    time: data.time,
+    counter: `${data.counter.hr}:${data.counter.min}:${data.counter.sec}.${data.counter.msec}`,
+  });
+  push(ref(db), "hello");
+};
+
+const getLeaderboard = () => {
+  const db = getDatabase();
+  const q = query(ref(db, "leaderboard"), orderByChild("time"));
+  return get(q);
+};
+
+export { initFirebase, getData, submitData, getLeaderboard };
