@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import Form from "./Form.jsx";
+import Leaderboard from "./Leaderboard.jsx";
+import "../styles/WinnerScreen.css";
 
-const WinnerScreen = ({ finalTime }) => {
-  console.log(finalTime);
-  return (
-    <h1>
-      Winner Screen, in{" "}
-      {finalTime
-        ? `${finalTime.hr}:${finalTime.min}:${finalTime.sec}`
-        : ""}
-    </h1>
+const WinnerScreen = ({ finalTime, initialTime }) => {
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  return isFormSubmitted ? (
+    <Leaderboard />
+  ) : (
+    <Form
+      finalTime={finalTime}
+      initialTime={initialTime}
+      setIsFormSubmitted={setIsFormSubmitted}
+    />
   );
 };
 
