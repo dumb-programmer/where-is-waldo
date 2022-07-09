@@ -2,10 +2,17 @@ import { useState, useRef, useEffect } from "react";
 import Cursor from "./Cursor.jsx";
 import WinnerScreen from "./WinnerScreen.jsx";
 import Feedback from "./Feedback.jsx";
-import { getData } from "../firebase";
+import { initFirebase, getData } from "../firebase";
 import puzzleImage from "../assets/images/puzzle.jpg";
 
-const Main = ({ selected, setSelected, win, setWin, finalTime }) => {
+const Main = ({
+  selected,
+  setSelected,
+  win,
+  setWin,
+  finalTime,
+  initialTime,
+}) => {
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
   const [isMouseIn, setIsMouseIn] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -18,6 +25,8 @@ const Main = ({ selected, setSelected, win, setWin, finalTime }) => {
     const x = main.pageX - 49;
     const y = main.pageY - 120;
     setCoordinates({ x, y });
+
+    initFirebase();
     getData().then((snapshot) => {
       data.current = snapshot;
     });
@@ -38,7 +47,7 @@ const Main = ({ selected, setSelected, win, setWin, finalTime }) => {
 
   return win ? (
     <main style={{ cursor: "auto" }}>
-      <WinnerScreen finalTime={finalTime} />
+      <WinnerScreen finalTime={finalTime} initialTime={initialTime} />
     </main>
   ) : (
     <main onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}>
