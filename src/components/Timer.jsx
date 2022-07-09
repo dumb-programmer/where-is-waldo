@@ -5,7 +5,7 @@ const Timer = ({ win, setFinalTime }) => {
   const [timer, setTimer] = useState({ hr: 0, min: 0, sec: 0, msec: 0 });
 
   const incrementTimer = ({ hr, min, sec, msec }) => {
-    if (msec < 998) {
+    if (msec < 9) {
       msec++;
     } else if (sec < 58) {
       msec = 0;
@@ -24,7 +24,7 @@ const Timer = ({ win, setFinalTime }) => {
   useEffect(() => {
     const timerId = setInterval(() => {
       setTimer(incrementTimer(timer));
-    }, 1);
+    }, 100);
     if (win) {
       clearInterval(timerId);
       setFinalTime(timer);
