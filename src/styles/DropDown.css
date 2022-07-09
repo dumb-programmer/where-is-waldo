@@ -6,6 +6,7 @@
     width: 7rem;
     border-radius: 0.5rem;
     transition: all 0.3s ease-out;
+    user-select: none;
 }
 
 .drop-down li {
