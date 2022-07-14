@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DropDown from "./DropDown";
+import uniqid from "uniqid";
 import "../styles/Cursor.css";
 
 const Cursor = ({
@@ -15,11 +16,11 @@ const Cursor = ({
   const { x, y } = coordinates;
 
   const [openDropDown, setOpenDropDown] = useState(false);
-  const [items, setItems] = useState([
-    "Waldo",
-    "Wilma",
-    "Odlaw",
-    "Wizard Whitebeard",
+  const [characters, setCharacters] = useState([
+    { id: uniqid(), name: "Waldo" },
+    { id: uniqid(), name: "Wilma" },
+    { id: uniqid(), name: "Odlaw" },
+    { id: uniqid(), name: "Wizard Whitebeard" },
   ]);
 
   const onClick = () => {
@@ -42,8 +43,8 @@ const Cursor = ({
       <div className="circle"></div>
       {openDropDown && (
         <DropDown
-          items={items}
-          setItems={setItems}
+          characters={characters}
+          setCharacters={setCharacters}
           cursor_pos={coordinates}
           data={data}
           selected={selected}

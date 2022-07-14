@@ -4,8 +4,8 @@ import ListItem from "./ListItem.jsx";
 import "../styles/DropDown.css";
 
 const DropDown = ({
-  items,
-  setItems,
+  characters,
+  setCharacters,
   cursor_pos,
   data,
   selected,
@@ -16,13 +16,13 @@ const DropDown = ({
 }) => {
   return (
     <ul className="drop-down">
-      {items.map((item, index) => (
+      {characters.map((item, index) => (
         <ListItem
-          key={uniqid()}
-          caption={item}
+          key={item.id}
+          caption={item.name}
           index={index}
-          items={items}
-          setItems={setItems}
+          characters={characters}
+          setCharacters={setCharacters}
           cursor_pos={cursor_pos}
           selected={selected}
           setSelected={setSelected}
