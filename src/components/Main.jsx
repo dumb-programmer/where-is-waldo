@@ -1,34 +1,28 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Cursor from "./Cursor.jsx";
 import WinnerScreen from "./WinnerScreen.jsx";
 import Feedback from "./Feedback.jsx";
 import { initFirebase, getData } from "../firebase";
 import puzzleImage from "../assets/images/puzzle.jpg";
 
-const Main = ({
-  selected,
-  setSelected,
-  win,
-  setWin,
-  finalTime,
-  initialTime,
-}) => {
+const Main = ({ selected, setSelected, win, setWin, finalTime }) => {
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
   const [isMouseIn, setIsMouseIn] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [showFound, setShowFound] = useState(false);
   const [showError, setShowError] = useState(false);
-  const data = useRef(null);
+  const [initialTime, setInitialTime] = useState(0);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const main = document.querySelector("main");
     const x = main.pageX - 49;
     const y = main.pageY - 120;
     setCoordinates({ x, y });
-
+    setInitialTime(Date.now());
     initFirebase();
     getData().then((snapshot) => {
-      data.current = snapshot;
+      setData(snapshot);
     });
   }, []);
 
