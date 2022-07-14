@@ -17,8 +17,7 @@ const Leaderboard = () => {
     for (const key in leaderboard) {
       array.push(leaderboard[key]);
     }
-    console.log(array);
-    return array;
+    return array.sort((a, b) => a.time - b.time);
   };
 
   return (

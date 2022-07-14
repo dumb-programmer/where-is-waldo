@@ -45,12 +45,11 @@ const submitData = (data) => {
     time: data.time,
     counter: `${data.counter.hr}:${data.counter.min}:${data.counter.sec}.${data.counter.msec}`,
   });
-  push(ref(db), "hello");
 };
 
 const getLeaderboard = () => {
   const db = getDatabase();
-  const q = query(ref(db, "leaderboard"), orderByChild("time"));
+  const q = query(ref(db, "leaderboard"));
   return get(q);
 };
 
