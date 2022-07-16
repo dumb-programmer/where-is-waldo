@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import DropDown from "./DropDown";
-import uniqid from "uniqid";
 import "../styles/Cursor.css";
 
 const Cursor = ({
   coordinates,
   data,
   setIsClicked,
-  selected,
-  setSelected,
+  characters,
+  setCharacters,
   setWin,
   setShowFound,
   setShowError,
@@ -16,12 +15,6 @@ const Cursor = ({
   const { x, y } = coordinates;
 
   const [openDropDown, setOpenDropDown] = useState(false);
-  const [characters, setCharacters] = useState([
-    { id: uniqid(), name: "Waldo" },
-    { id: uniqid(), name: "Wilma" },
-    { id: uniqid(), name: "Odlaw" },
-    { id: uniqid(), name: "Wizard Whitebeard" },
-  ]);
 
   const onClick = () => {
     setIsClicked((prevState) => !prevState);
@@ -47,8 +40,6 @@ const Cursor = ({
           setCharacters={setCharacters}
           cursor_pos={coordinates}
           data={data}
-          selected={selected}
-          setSelected={setSelected}
           setWin={setWin}
           setShowFound={setShowFound}
           setShowError={setShowError}

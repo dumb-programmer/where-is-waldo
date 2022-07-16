@@ -5,7 +5,7 @@ import Feedback from "./Feedback.jsx";
 import { initFirebase, getData } from "../firebase";
 import puzzleImage from "../assets/images/puzzle.jpg";
 
-const Main = ({ selected, setSelected, win, setWin, finalTime }) => {
+const Main = ({ characters, setCharacters, win, setWin, finalTime }) => {
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
   const [isMouseIn, setIsMouseIn] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -51,8 +51,8 @@ const Main = ({ selected, setSelected, win, setWin, finalTime }) => {
           coordinates={coordinates}
           data={data}
           setIsClicked={setIsClicked}
-          selected={selected}
-          setSelected={setSelected}
+          characters={characters}
+          setCharacters={setCharacters}
           setWin={setWin}
           setShowFound={setShowFound}
           setShowError={setShowError}

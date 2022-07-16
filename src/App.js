@@ -1,29 +1,33 @@
 import React, { useState } from "react";
-import "./styles/App.css";
 import Header from "./components/Header.jsx";
 import Main from "./components/Main.jsx";
+import uniqid from "uniqid";
+import waldo from "./assets/images/waldo.png";
+import wilma from "./assets/images/wilma.png";
+import odlaw from "./assets/images/odlaw.png";
+import wizard from "./assets/images/wizard_whitebeard.png";
+import "./styles/App.css";
 
 function App() {
-  const [selected, setSelected] = useState({
-    Waldo: false,
-    "Wizard Whitebeard": false,
-    Wilma: false,
-    Odlaw: false,
-  });
+  const [characters, setCharacters] = useState([
+    { id: uniqid(), name: "Waldo", found: false, avatar: waldo },
+    { id: uniqid(), name: "Wilma", found: false, avatar: wilma },
+    { id: uniqid(), name: "Odlaw", found: false, avatar: odlaw },
+    { id: uniqid(), name: "Wizard Whitebeard", found: false, avatar: wizard },
+  ]);
+
   const [win, setWin] = useState(false);
   const [finalTime, setFinalTime] = useState(null);
-  const initialTime = new Date().getTime();
 
   return (
     <div className="App">
-      <Header selected={selected} win={win} setFinalTime={setFinalTime}/>
+      <Header characters={characters} win={win} setFinalTime={setFinalTime} />
       <Main
-        selected={selected}
-        setSelected={setSelected}
+        characters={characters}
+        setCharacters={setCharacters}
         win={win}
         setWin={setWin}
         finalTime={finalTime}
-        initialTime={initialTime}
       />
     </div>
   );

@@ -1,21 +1,9 @@
 import "../styles/Header.css";
-import uniqid from "uniqid";
 import logo from "../assets/images/logo.png";
-import waldo from "../assets/images/waldo.png";
-import wilma from "../assets/images/wilma.png";
-import odlaw from "../assets/images/odlaw.png";
-import wizard from "../assets/images/wizard_whitebeard.png";
 import React from "react";
 import Timer from "./Timer";
 
-const Header = ({ selected, win, setFinalTime }) => {
-  const avatars = [
-    { id: uniqid(), src: waldo, alt: "Waldo" },
-    { id: uniqid(), src: wilma, alt: "Wilma" },
-    { id: uniqid(), src: odlaw, alt: "Odlaw" },
-    { id: uniqid(), src: wizard, alt: "Wizard Whitebeard" },
-  ];
-
+const Header = ({ characters, win, setFinalTime }) => {
   return (
     <header>
       <div className="logo-container">
@@ -23,12 +11,12 @@ const Header = ({ selected, win, setFinalTime }) => {
       </div>
       <div className="avatar-container">
         {win ||
-          avatars.map((avatar) => (
+          characters.map((character) => (
             <img
-              key={avatar.id}
-              src={avatar.src}
-              alt={avatar.alt}
-              className={"avatar" + (selected[avatar.alt] ? " grayscale" : "")}
+              key={character.id}
+              src={character.avatar}
+              alt={character.name}
+              className={`avatar ${character.found ? "grayscale" : ""}`}
             />
           ))}
       </div>
