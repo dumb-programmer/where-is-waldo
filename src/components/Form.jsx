@@ -9,8 +9,8 @@ const Form = ({ initialTime, finalTime, setIsFormSubmitted }) => {
   };
 
   const onSubmit = (e) => {
-    const finTime = new Date().getTime();
-    const diff = finTime - initialTime;
+    const finTime = new Date();
+    const diff = finTime.getTime() - initialTime.getTime();
     e.preventDefault();
     submitData({ name: e.target.name.value, time: diff, counter: finalTime });
     setIsFormSubmitted(true);

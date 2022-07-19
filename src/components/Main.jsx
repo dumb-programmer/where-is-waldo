@@ -19,7 +19,7 @@ const Main = ({ characters, setCharacters, win, setWin, finalTime }) => {
     const x = main.pageX - 49;
     const y = main.pageY - 120;
     setCoordinates({ x, y });
-    setInitialTime(Date.now());
+    setInitialTime(new Date());
     initFirebase();
     getData().then((snapshot) => {
       setData(snapshot);
