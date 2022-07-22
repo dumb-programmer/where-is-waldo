@@ -5,10 +5,10 @@ import {
   ref,
   push,
   set,
-  orderByChild,
   query,
   get,
 } from "firebase/database";
+import { getAuth, signInAnonymously } from "firebase/auth";
 
 const initFirebase = () => {
   const firebaseConfig = {
@@ -21,6 +21,10 @@ const initFirebase = () => {
     appId: process.env.FIREBASE_APP_ID,
   };
   initializeApp(firebaseConfig);
+};
+
+const signIn = () => {
+  signInAnonymously(getAuth());
 };
 
 const getData = async () => {
@@ -53,4 +57,4 @@ const getLeaderboard = () => {
   return get(q);
 };
 
-export { initFirebase, getData, submitData, getLeaderboard };
+export { initFirebase, signIn, getData, submitData, getLeaderboard };
