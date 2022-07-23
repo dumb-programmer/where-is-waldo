@@ -1,6 +1,6 @@
 .cursor-container {
-    top: 0;
-    left: 0;
+    top: -120px;
+    left: -50px;
     position: absolute;
     display: flex;
     min-height: 100px;

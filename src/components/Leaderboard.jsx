@@ -30,12 +30,8 @@ const Leaderboard = () => {
             </td>
           </tr>
           <tr>
-            <td>
-              <th>Name</th>
-            </td>
-            <td>
-              <th>Time</th>
-            </td>
+            <th>Name</th>
+            <th>Time</th>
           </tr>
         </thead>
         <tbody>
