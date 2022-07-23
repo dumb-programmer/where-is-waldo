@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Cursor from "./Cursor.jsx";
 import WinnerScreen from "./WinnerScreen.jsx";
 import Feedback from "./Feedback.jsx";
-import { initFirebase, getData } from "../firebase";
+import { getData } from "../firebase";
 import puzzleImage from "../assets/images/puzzle.jpg";
 
 const Main = ({ characters, setCharacters, win, setWin, finalTime }) => {
@@ -13,14 +13,14 @@ const Main = ({ characters, setCharacters, win, setWin, finalTime }) => {
   const [showError, setShowError] = useState(false);
   const [initialTime, setInitialTime] = useState(0);
   const [data, setData] = useState([]);
+  const [characterName, setCharacterName] = useState("");
 
   useEffect(() => {
     const main = document.querySelector("main");
-    const x = main.pageX - 49;
-    const y = main.pageY - 120;
+    const x = main.clientX;
+    const y = main.clientY;
     setCoordinates({ x, y });
     setInitialTime(new Date());
-    initFirebase();
     getData().then((snapshot) => {
       setData(snapshot);
     });
@@ -29,8 +29,8 @@ const Main = ({ characters, setCharacters, win, setWin, finalTime }) => {
   const onMouseMove = (e) => {
     if (!isClicked) {
       setIsMouseIn(true);
-      const x = e.pageX - 49;
-      const y = e.pageY - 120;
+      const x = e.clientX;
+      const y = e.clientY;
       setCoordinates({ x, y });
     }
   };
@@ -56,10 +56,11 @@ const Main = ({ characters, setCharacters, win, setWin, finalTime }) => {
           setWin={setWin}
           setShowFound={setShowFound}
           setShowError={setShowError}
+          setCharacterName={setCharacterName}
         />
       )}
       {showError && <Feedback error={true} setShowError={setShowError} />}
-      {showFound && <Feedback setShowFound={setShowFound} />}
+      {showFound && <Feedback setShowFound={setShowFound} characterName={characterName}/>}
     </main>
   );
 };

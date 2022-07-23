@@ -10,6 +10,7 @@ const DropDown = ({
   setWin,
   setShowFound,
   setShowError,
+  setCharacterName,
 }) => {
   return (
     <ul className="drop-down">
@@ -27,6 +28,7 @@ const DropDown = ({
               setShowFound={setShowFound}
               setShowError={setShowError}
               data={data}
+              setCharacterName={setCharacterName}
             />
           )
       )}

@@ -11,6 +11,7 @@ const Cursor = ({
   setWin,
   setShowFound,
   setShowError,
+  setCharacterName
 }) => {
   const { x, y } = coordinates;
 
@@ -29,7 +30,7 @@ const Cursor = ({
   return (
     <div
       className="cursor-container"
-      style={{ transform: `translate3d(${x}px,${y}px,0px)` }}
+      style={{ transform: `translate(${x}px,${y}px)` }}
       onClick={onClick}
       onMouseLeave={onMouseOut}
     >
@@ -43,6 +44,7 @@ const Cursor = ({
           setWin={setWin}
           setShowFound={setShowFound}
           setShowError={setShowError}
+          setCharacterName={setCharacterName}
         />
       )}
     </div>

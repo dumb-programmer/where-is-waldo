@@ -10,6 +10,7 @@ const ListItem = ({
   setShowFound,
   setShowError,
   data,
+  setCharacterName,
 }) => {
   const onClick = () => {
     const character = characters[index].name;
@@ -17,7 +18,7 @@ const ListItem = ({
 
     let match = false;
     for (const position of position_of_character) {
-      if (cursor_pos.x === +position.x && cursor_pos.y === +position.y) {
+      if (cursor_pos.x === position.x && cursor_pos.y === position.y  ) {
         match = true;
 
         setShowFound(true);
@@ -26,6 +27,8 @@ const ListItem = ({
         newCharacters[index].found = true;
 
         setCharacters(newCharacters);
+
+        setCharacterName(character);
 
         if (Object.values(characters).every((item) => item.found === true)) {
           setWin(true);
