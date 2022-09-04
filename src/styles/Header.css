@@ -2,6 +2,8 @@ header {
     width: 100%;
     display: flex;
     background-color: var(--primary);
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+    z-index: 2;
 }
 
 .logo {

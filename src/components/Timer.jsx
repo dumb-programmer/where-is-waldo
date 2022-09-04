@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Timer.css";
 
-const Timer = ({ win, setFinalTime }) => {
+const Timer = ({ win, loading, setFinalTime }) => {
   const [timer, setTimer] = useState({ hr: 0, min: 0, sec: 0, msec: 0 });
 
   const incrementTimer = ({ hr, min, sec, msec }) => {
@@ -22,15 +22,17 @@ const Timer = ({ win, setFinalTime }) => {
   };
 
   useEffect(() => {
-    const timerId = setInterval(() => {
-      setTimer(incrementTimer(timer));
-    }, 100);
-    if (win) {
-      clearInterval(timerId);
-      setFinalTime(timer);
+    if (!loading) {
+      const timerId = setInterval(() => {
+        setTimer(incrementTimer(timer));
+      }, 100);
+      if (win) {
+        clearInterval(timerId);
+        setFinalTime(timer);
+      }
+      return () => clearInterval(timerId);
     }
-    return () => clearInterval(timerId);
-  }, [timer, win, setFinalTime]);
+  }, [timer, win, loading, setFinalTime]);
 
   return (
     <div className="timer">

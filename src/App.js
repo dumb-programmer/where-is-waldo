@@ -19,6 +19,7 @@ function App() {
 
   const [win, setWin] = useState(false);
   const [finalTime, setFinalTime] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     initFirebase();
@@ -27,13 +28,20 @@ function App() {
 
   return (
     <div className="App">
-      <Header characters={characters} win={win} setFinalTime={setFinalTime} />
+      <Header
+        characters={characters}
+        win={win}
+        loading={loading}
+        setFinalTime={setFinalTime}
+      />
       <Main
         characters={characters}
         setCharacters={setCharacters}
         win={win}
+        loading={loading}
         setWin={setWin}
         finalTime={finalTime}
+        setLoading={setLoading}
       />
     </div>
   );

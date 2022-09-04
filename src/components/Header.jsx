@@ -3,7 +3,7 @@ import logo from "../assets/images/logo.png";
 import React from "react";
 import Timer from "./Timer";
 
-const Header = ({ characters, win, setFinalTime }) => {
+const Header = ({ characters, win, loading, setFinalTime }) => {
   return (
     <header>
       <div className="logo-container">
@@ -20,7 +20,7 @@ const Header = ({ characters, win, setFinalTime }) => {
             />
           ))}
       </div>
-      <Timer win={win} setFinalTime={setFinalTime} />
+      <Timer win={win} loading={loading} setFinalTime={setFinalTime} />
     </header>
   );
 };

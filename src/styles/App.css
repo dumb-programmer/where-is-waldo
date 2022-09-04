@@ -1,10 +1,36 @@
 .App {
     height: 100vh;
-    display: grid;
-    grid-template-rows: 0.1fr max-content;
+    display: flex;
+    flex-direction: column;
+    background-color: #F7F6DC;
+}
+
+main {
+    flex: 2;
+    overflow-y: auto;
 }
 
 .puzzle-img {
     height: 100vh;
     width: 100%;
+}
+
+.pluse-animation {
+    transform: scale(1);
+    animation: pulse 1s infinite;
+    border-radius: 50%;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
