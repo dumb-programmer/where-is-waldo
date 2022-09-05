@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "./components/Header.jsx";
 import Main from "./components/Main.jsx";
 import uniqid from "uniqid";
@@ -6,7 +6,6 @@ import waldo from "./assets/images/waldo.png";
 import wilma from "./assets/images/wilma.png";
 import odlaw from "./assets/images/odlaw.png";
 import wizard from "./assets/images/wizard_whitebeard.png";
-import { initFirebase, signIn } from "./firebase";
 import "./styles/App.css";
 
 function App() {
@@ -20,11 +19,6 @@ function App() {
   const [win, setWin] = useState(false);
   const [finalTime, setFinalTime] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    initFirebase();
-    signIn();
-  });
 
   return (
     <div className="App">
