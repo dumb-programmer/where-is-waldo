@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { submitData } from "../firebase";
+import "../styles/Form.css";
 
 const Form = ({ initialTime, finalTime, setIsFormSubmitted }) => {
   const [name, setName] = useState("");
@@ -17,7 +18,7 @@ const Form = ({ initialTime, finalTime, setIsFormSubmitted }) => {
   };
 
   return (
-    <div className="form-container">
+    <div className="modal-container">
       <form onSubmit={onSubmit}>
         <div className="form-controls">
           <label htmlFor="time">Time:</label>
@@ -40,7 +41,9 @@ const Form = ({ initialTime, finalTime, setIsFormSubmitted }) => {
           />
         </div>
         <div className="btn-container">
-          <button type="submit">OK</button>
+          <button className="submit-btn" type="submit">
+            Submit
+          </button>
         </div>
       </form>
     </div>

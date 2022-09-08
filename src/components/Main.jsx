@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Cursor from "./Cursor.jsx";
-import WinnerScreen from "./WinnerScreen.jsx";
+import Form from "./Form.jsx";
+import Leaderboard from "./Leaderboard.jsx";
 import Feedback from "./Feedback.jsx";
 import { getData } from "../firebase";
 import puzzleImage from "../assets/images/puzzle.jpg";
@@ -23,6 +24,7 @@ const Main = ({
   const [data, setData] = useState([]);
   const [characterName, setCharacterName] = useState("");
   const [relativeCoords, setRelativeCoords] = useState({ x: 0, y: 0 });
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const imgRef = useRef();
 
   const calculateRelativeCoordinates = (e) => {
@@ -114,7 +116,18 @@ const Main = ({
 
   return win ? (
     <main style={{ cursor: "auto" }}>
-      <WinnerScreen finalTime={finalTime} initialTime={initialTime} />
+      {!isFormSubmitted ? (
+        <>
+          <Form
+            finalTime={finalTime}
+            initialTime={initialTime}
+            setIsFormSubmitted={setIsFormSubmitted}
+          />
+          <img src={puzzleImage} alt="puzzle" className="puzzle-img" />
+        </>
+      ) : (
+        <Leaderboard />
+      )}
     </main>
   ) : (
     <main onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}>
