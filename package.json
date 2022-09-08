@@ -1,6 +1,5 @@
 {
   "name": "where-is-waldo",
-  "homepage": "https://dumb-programmer.github.io/where-is-waldo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

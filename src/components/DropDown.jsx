@@ -6,6 +6,7 @@ const DropDown = ({
   characters,
   setCharacters,
   cursor_pos,
+  relativeCoords,
   data,
   setWin,
   setShowFound,
@@ -24,6 +25,7 @@ const DropDown = ({
               characters={characters}
               setCharacters={setCharacters}
               cursor_pos={cursor_pos}
+              relativeCoords={relativeCoords}
               setWin={setWin}
               setShowFound={setShowFound}
               setShowError={setShowError}

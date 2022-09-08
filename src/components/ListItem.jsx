@@ -5,7 +5,7 @@ const ListItem = ({
   characters,
   setCharacters,
   index,
-  cursor_pos,
+  relativeCoords,
   setWin,
   setShowFound,
   setShowError,
@@ -18,7 +18,7 @@ const ListItem = ({
 
     let match = false;
     for (const position of position_of_character) {
-      if (cursor_pos.x === position.x && cursor_pos.y === position.y  ) {
+      if (relativeCoords.x === position.x && relativeCoords.y === position.y) {
         match = true;
 
         setShowFound(true);

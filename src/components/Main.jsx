@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Cursor from "./Cursor.jsx";
 import WinnerScreen from "./WinnerScreen.jsx";
 import Feedback from "./Feedback.jsx";
@@ -22,14 +22,23 @@ const Main = ({
   const [initialTime, setInitialTime] = useState(0);
   const [data, setData] = useState([]);
   const [characterName, setCharacterName] = useState("");
+  const [relativeCoords, setRelativeCoords] = useState({ x: 0, y: 0 });
+  const imgRef = useRef();
 
-  useEffect(() => {
-    setInitialTime(new Date());
-    getData().then((snapshot) => {
-      setData(snapshot);
-      setLoading(false);
-    });
-  }, []);
+  const calculateRelativeCoordinates = (e) => {
+    const rect = imgRef.current.getBoundingClientRect();
+    var offset = {
+      top: rect.top + window.scrollY,
+      left: rect.left + window.scrollX,
+    };
+    const val1 = Math.round(
+      ((e.pageX - offset.left) / imgRef.current.offsetWidth) * 100
+    );
+    const val2 = Math.round(
+      ((e.pageY - offset.top) / imgRef.current.offsetHeight) * 100
+    );
+    setRelativeCoords({ x: val1, y: val2 });
+  };
 
   const onMouseMove = (e) => {
     if (!isClicked) {
@@ -37,12 +46,21 @@ const Main = ({
       const x = e.pageX;
       const y = e.pageY + document.querySelector("main").scrollTop;
       setCoordinates({ x, y });
+      calculateRelativeCoordinates(e);
     }
   };
 
   const onMouseLeave = () => {
     setIsMouseIn(false);
   };
+
+  useEffect(() => {
+    setInitialTime(new Date());
+    getData().then((snapshot) => {
+      setData(snapshot);
+      setLoading(false);
+    });
+  }, [setLoading]);
 
   if (loading) {
     return (
@@ -100,10 +118,11 @@ const Main = ({
     </main>
   ) : (
     <main onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}>
-      <img src={puzzleImage} alt="puzzle" className="puzzle-img" />
+      <img ref={imgRef} src={puzzleImage} alt="puzzle" className="puzzle-img" />
       {isMouseIn && (
         <Cursor
           coordinates={coordinates}
+          relativeCoords={relativeCoords}
           data={data}
           setIsClicked={setIsClicked}
           characters={characters}
