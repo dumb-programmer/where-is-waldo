@@ -19,12 +19,17 @@ header {
     align-items: center;
 }
 
-.avatar {
-    height: 3.65rem;
-    width: 3.65rem;
+.avatar-img {
+    height: 45px;
+    width: 45px;
     margin-right: 2rem;
 }
 
 .grayscale {
     filter: grayscale(1);
+}
+
+.avatar-name {
+    color: white;
+    font-weight: bold;
 }
