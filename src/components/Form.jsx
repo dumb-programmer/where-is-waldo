@@ -1,32 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { submitData } from "../firebase";
 import "../styles/Form.css";
 
-const Form = ({ initialTime, finalTime, setIsFormSubmitted }) => {
+const Form = ({ initialTime, counterTime, setIsFormSubmitted }) => {
   const [name, setName] = useState("");
+  const [finalTime, setFinalTime] = useState(null);
 
   const onNameChange = (e) => {
     setName(e.target.value);
   };
 
   const onSubmit = (e) => {
-    const finTime = new Date();
-    const diff = finTime.getTime() - initialTime.getTime();
     e.preventDefault();
-    submitData({ name: e.target.name.value, time: diff, counter: finalTime });
+    const diff = finalTime - initialTime;
+    submitData({ name: e.target.name.value, time: diff, counter: counterTime });
     setIsFormSubmitted(true);
   };
+
+  useEffect(() => {
+    setFinalTime(new Date().getTime());
+  }, []);
 
   return (
     <div className="modal-container">
       <form onSubmit={onSubmit}>
         <div className="form-controls">
           <label htmlFor="time">Time:</label>
-          <span id="time">
-            {finalTime
-              ? `${finalTime.hr}:${finalTime.min}:${finalTime.sec}:${finalTime.msec}`
-              : ""}
-          </span>
+          <span id="time">{counterTime}</span>
         </div>
         <div className="form-controls">
           <label htmlFor="name">Name:</label>

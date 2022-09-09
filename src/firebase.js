@@ -43,7 +43,7 @@ const submitData = (data) => {
   set(push(leaderboardRef), {
     name: `${data.name}`,
     time: data.time,
-    counter: `${data.counter.hr}:${data.counter.min}:${data.counter.sec}.${data.counter.msec}`,
+    counter: data.counter,
   });
 };
 

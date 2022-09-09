@@ -1,42 +1,32 @@
 import React, { useState, useEffect } from "react";
+import formatTime from "../formatTime";
 import "../styles/Timer.css";
 
-const Timer = ({ win, loading, setFinalTime }) => {
-  const [timer, setTimer] = useState({ hr: 0, min: 0, sec: 0, msec: 0 });
-
-  const incrementTimer = ({ hr, min, sec, msec }) => {
-    if (msec < 9) {
-      msec++;
-    } else if (sec < 58) {
-      msec = 0;
-      sec++;
-    } else if (min < 58) {
-      sec = 0;
-      min++;
-    } else {
-      min = 0;
-      hr++;
-    }
-
-    return { hr, min, sec, msec };
-  };
+const Timer = ({ win, loading, setCounterTime }) => {
+  const [timer, setTimer] = useState(null);
+  const [initalTime, setInitialTime] = useState(null);
+  const [flag, setFlag] = useState(true);
 
   useEffect(() => {
+    if (flag && !loading) {
+      setInitialTime(new Date().getTime());
+      setFlag(false);
+    }
     if (!loading) {
       const timerId = setInterval(() => {
-        setTimer(incrementTimer(timer));
-      }, 100);
+        setTimer(new Date().getTime() - initalTime);
+      }, 1);
       if (win) {
         clearInterval(timerId);
-        setFinalTime(timer);
+        setCounterTime(formatTime(timer));
       }
       return () => clearInterval(timerId);
     }
-  }, [timer, win, loading, setFinalTime]);
+  }, [timer, win, loading]);
 
   return (
     <div className="timer">
-      <h1>{`${timer.hr}:${timer.min}:${timer.sec}.${timer.msec}`}</h1>
+      <h1>{formatTime(timer)}</h1>
     </div>
   );
 };

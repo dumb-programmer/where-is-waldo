@@ -13,11 +13,11 @@ const Leaderboard = () => {
   }, []);
 
   const getArray = (leaderboard) => {
-    const array = [];
+    const sortedLeaderboard = [];
     for (const key in leaderboard) {
-      array.push(leaderboard[key]);
+      sortedLeaderboard.push(leaderboard[key]);
     }
-    return array.sort((a, b) => a.time - b.time);
+    return sortedLeaderboard.sort((a, b) => a.time - b.time);
   };
 
   return (

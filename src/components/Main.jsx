@@ -12,7 +12,7 @@ const Main = ({
   win,
   loading,
   setWin,
-  finalTime,
+  counterTime,
   setLoading,
 }) => {
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
@@ -57,12 +57,12 @@ const Main = ({
   };
 
   useEffect(() => {
-    setInitialTime(new Date());
+    setInitialTime(new Date().getTime());
     getData().then((snapshot) => {
       setData(snapshot);
       setLoading(false);
     });
-  }, [setLoading]);
+  }, []);
 
   if (loading) {
     return (
@@ -119,7 +119,7 @@ const Main = ({
       {!isFormSubmitted ? (
         <>
           <Form
-            finalTime={finalTime}
+            counterTime={counterTime}
             initialTime={initialTime}
             setIsFormSubmitted={setIsFormSubmitted}
           />

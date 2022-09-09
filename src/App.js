@@ -17,8 +17,8 @@ function App() {
   ]);
 
   const [win, setWin] = useState(false);
-  const [finalTime, setFinalTime] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [counterTime, setCounterTime] = useState(null);
 
   return (
     <div className="App">
@@ -26,15 +26,15 @@ function App() {
         characters={characters}
         win={win}
         loading={loading}
-        setFinalTime={setFinalTime}
+        setCounterTime={setCounterTime}
       />
       <Main
         characters={characters}
         setCharacters={setCharacters}
         win={win}
         loading={loading}
+        counterTime={counterTime}
         setWin={setWin}
-        finalTime={finalTime}
         setLoading={setLoading}
       />
     </div>
