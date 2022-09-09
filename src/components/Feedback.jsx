@@ -14,7 +14,7 @@ const Feedback = ({ error, setShowError, setShowFound, characterName }) => {
       clearTimeout(timer);
     };
   }, []);
-  
+
   const icon = error ? "cross-icon" : "check-icon";
 
   return (
@@ -22,7 +22,9 @@ const Feedback = ({ error, setShowError, setShowFound, characterName }) => {
       <div className="container">
         <div className="feedback-container">
           <i className={`icon ${icon}`}></i>
-          <p>{error ? "Keep Looking" : `You found ${characterName}`}</p>
+          <p className="feedback-text">
+            {error ? "Keep Looking" : `You found ${characterName}`}
+          </p>
         </div>
       </div>
     )
