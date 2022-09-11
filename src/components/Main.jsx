@@ -24,7 +24,7 @@ const Main = ({
   const [data, setData] = useState([]);
   const [characterName, setCharacterName] = useState("");
   const [relativeCoords, setRelativeCoords] = useState({ x: 0, y: 0 });
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const imgRef = useRef();
 
   const calculateRelativeCoordinates = (e) => {
@@ -118,12 +118,12 @@ const Main = ({
 
   return win ? (
     <main style={{ cursor: "auto" }}>
-      {!isFormSubmitted ? (
+      {!formSubmitted ? (
         <>
           <Form
             counterTime={counterTime}
             initialTime={initialTime}
-            setIsFormSubmitted={setIsFormSubmitted}
+            onFormSubmit={() => setFormSubmitted(true)}
           />
           <img src={puzzleImage} alt="puzzle" className="puzzle-img" />
         </>

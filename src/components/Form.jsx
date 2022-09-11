@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { submitData } from "../firebase";
 import "../styles/Form.css";
 
-const Form = ({ initialTime, counterTime, setIsFormSubmitted }) => {
+const Form = ({ initialTime, counterTime, onFormSubmit }) => {
   const [name, setName] = useState("");
   const [finalTime, setFinalTime] = useState(null);
 
@@ -10,11 +10,15 @@ const Form = ({ initialTime, counterTime, setIsFormSubmitted }) => {
     setName(e.target.value);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const diff = finalTime - initialTime;
-    submitData({ name: e.target.name.value, time: diff, counter: counterTime });
-    setIsFormSubmitted(true);
+    await submitData({
+      name: e.target.name.value,
+      time: diff,
+      counter: counterTime,
+    });
+    onFormSubmit();
   };
 
   useEffect(() => {

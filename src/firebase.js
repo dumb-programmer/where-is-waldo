@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {
   getDatabase,
-  onValue,
   ref,
   push,
   set,
@@ -25,22 +24,14 @@ signInAnonymously(getAuth(app));
 
 const getData = async () => {
   const db = getDatabase(app);
-  const dbRef = ref(db);
-  return new Promise((resolve, reject) => {
-    onValue(
-      dbRef,
-      (snapshot) => {
-        resolve(snapshot.val()["characters"]);
-      },
-      (error) => reject(console.log(error))
-    );
-  });
+  const q = query(ref(db, "characters"));
+  return get(q);
 };
 
 const submitData = (data) => {
   const db = getDatabase(app);
   const leaderboardRef = ref(db, "leaderboard/");
-  set(push(leaderboardRef), {
+  return set(push(leaderboardRef), {
     name: `${data.name}`,
     time: data.time,
     counter: data.counter,
