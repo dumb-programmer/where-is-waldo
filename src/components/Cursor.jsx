@@ -9,7 +9,6 @@ const Cursor = ({
   setIsClicked,
   characters,
   setCharacters,
-  setWin,
   setShowFound,
   setShowError,
   setCharacterName
@@ -43,7 +42,6 @@ const Cursor = ({
           cursor_pos={coordinates}
           relativeCoords={relativeCoords}
           data={data}
-          setWin={setWin}
           setShowFound={setShowFound}
           setShowError={setShowError}
           setCharacterName={setCharacterName}

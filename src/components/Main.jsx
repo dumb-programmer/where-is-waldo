@@ -5,13 +5,13 @@ import Leaderboard from "./Leaderboard.jsx";
 import Feedback from "./Feedback.jsx";
 import { getData } from "../firebase";
 import puzzleImage from "../assets/images/puzzle.jpg";
+import { flushSync } from "react-dom";
 
 const Main = ({
   characters,
   setCharacters,
   win,
   loading,
-  setWin,
   counterTime,
   setLoading,
 }) => {
@@ -59,7 +59,9 @@ const Main = ({
   useEffect(() => {
     getData().then((snapshot) => {
       setData(snapshot.val());
-      setLoading(false);
+      flushSync(() => {
+        setLoading(false);
+      });
       setInitialTime(new Date().getTime());
     });
   }, [setLoading]);
@@ -140,7 +142,6 @@ const Main = ({
           setIsClicked={setIsClicked}
           characters={characters}
           setCharacters={setCharacters}
-          setWin={setWin}
           setShowFound={setShowFound}
           setShowError={setShowError}
           setCharacterName={setCharacterName}

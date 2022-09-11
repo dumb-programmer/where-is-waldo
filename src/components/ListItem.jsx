@@ -29,10 +29,6 @@ const ListItem = ({
         setCharacters(newCharacters);
 
         setCharacterName(character);
-
-        if (Object.values(characters).every((item) => item.found === true)) {
-          setWin(true);
-        }
       }
     }
     if (!match) {
