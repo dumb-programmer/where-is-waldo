@@ -57,12 +57,12 @@ const Main = ({
   };
 
   useEffect(() => {
-    setInitialTime(new Date().getTime());
     getData().then((snapshot) => {
-      setData(snapshot);
+      setData(snapshot.val());
       setLoading(false);
+      setInitialTime(new Date().getTime());
     });
-  }, []);
+  }, [setLoading]);
 
   if (loading) {
     return (
