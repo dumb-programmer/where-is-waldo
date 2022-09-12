@@ -12,7 +12,8 @@ const Main = ({
   setCharacters,
   win,
   loading,
-  counterTime,
+  initialTime,
+  duration,
   setLoading,
 }) => {
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
@@ -20,7 +21,6 @@ const Main = ({
   const [isClicked, setIsClicked] = useState(false);
   const [showFound, setShowFound] = useState(false);
   const [showError, setShowError] = useState(false);
-  const [initialTime, setInitialTime] = useState(0);
   const [data, setData] = useState([]);
   const [characterName, setCharacterName] = useState("");
   const [relativeCoords, setRelativeCoords] = useState({ x: 0, y: 0 });
@@ -62,9 +62,9 @@ const Main = ({
       flushSync(() => {
         setLoading(false);
       });
-      setInitialTime(new Date().getTime());
+      initialTime.current = new Date().getTime();
     });
-  }, [setLoading]);
+  }, [setLoading, initialTime]);
 
   if (loading) {
     return (
@@ -121,8 +121,7 @@ const Main = ({
       {!formSubmitted ? (
         <>
           <Form
-            counterTime={counterTime}
-            initialTime={initialTime}
+            totalDuration={duration.current}
             onFormSubmit={() => setFormSubmitted(true)}
           />
           <img src={puzzleImage} alt="puzzle" className="puzzle-img" />

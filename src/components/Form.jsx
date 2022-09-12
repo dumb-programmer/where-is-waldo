@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { submitData } from "../firebase";
+import formatTime from "../formatTime";
 import "../styles/Form.css";
 
-const Form = ({ initialTime, counterTime, onFormSubmit }) => {
+const Form = ({ totalDuration, onFormSubmit }) => {
   const [name, setName] = useState("");
-  const [finalTime, setFinalTime] = useState(null);
 
   const onNameChange = (e) => {
     setName(e.target.value);
@@ -12,25 +12,20 @@ const Form = ({ initialTime, counterTime, onFormSubmit }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const diff = finalTime - initialTime;
     await submitData({
       name: e.target.name.value,
-      time: diff,
-      counter: counterTime,
+      time: totalDuration,
+      counter: formatTime(totalDuration),
     });
     onFormSubmit();
   };
-
-  useEffect(() => {
-    setFinalTime(new Date().getTime());
-  }, []);
 
   return (
     <div className="modal-container">
       <form onSubmit={onSubmit}>
         <div className="form-controls">
           <label htmlFor="time">Time:</label>
-          <span id="time">{counterTime}</span>
+          <span id="time">{formatTime(totalDuration)}</span>
         </div>
         <div className="form-controls">
           <label htmlFor="name">Name:</label>

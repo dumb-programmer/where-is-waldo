@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "./components/Header.jsx";
 import Main from "./components/Main.jsx";
 import waldo from "./assets/images/waldo.png";
@@ -17,7 +17,8 @@ function App() {
 
   const win = Object.values(characters).every((item) => item.found === true);
   const [loading, setLoading] = useState(true);
-  const [counterTime, setCounterTime] = useState(null);
+  const initialTime = useRef(null);
+  const duration = useRef(null);
 
   return (
     <div className="App">
@@ -25,14 +26,16 @@ function App() {
         characters={characters}
         win={win}
         loading={loading}
-        setCounterTime={setCounterTime}
+        initialTime={initialTime}
+        duration={duration}
       />
       <Main
         characters={characters}
         setCharacters={setCharacters}
         win={win}
         loading={loading}
-        counterTime={counterTime}
+        initialTime={initialTime}
+        duration={duration}
         setLoading={setLoading}
       />
     </div>

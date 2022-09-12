@@ -1,9 +1,8 @@
-import "../styles/Header.css";
 import logo from "../assets/images/logo.png";
-import React from "react";
 import Timer from "./Timer";
+import "../styles/Header.css";
 
-const Header = ({ characters, win, loading, setCounterTime }) => {
+const Header = ({ characters, win, loading, initialTime, duration }) => {
   return (
     <header>
       <div className="logo-container">
@@ -21,7 +20,12 @@ const Header = ({ characters, win, loading, setCounterTime }) => {
           </div>
         ))}
       </div>
-      <Timer win={win} loading={loading} setCounterTime={setCounterTime} />
+      <Timer
+        win={win}
+        loading={loading}
+        initialTime={initialTime}
+        duration={duration}
+      />
     </header>
   );
 };

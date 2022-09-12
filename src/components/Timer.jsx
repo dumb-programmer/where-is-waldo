@@ -1,28 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import formatTime from "../formatTime";
 import "../styles/Timer.css";
 
-const Timer = ({ win, loading, setCounterTime }) => {
+const Timer = ({ win, loading, initialTime, duration }) => {
   const [timer, setTimer] = useState(null);
-  const [initalTime, setInitialTime] = useState(null);
-  const [flag, setFlag] = useState(true);
+  const intervalId = useRef(null);
+
+  if (win) {
+    duration.current = timer;
+    clearInterval(intervalId.current);
+  }
 
   useEffect(() => {
-    if (flag && !loading) {
-      setInitialTime(new Date().getTime());
-      setFlag(false);
-    }
     if (!loading) {
-      const timerId = setInterval(() => {
-        setTimer(new Date().getTime() - initalTime);
+      intervalId.current = setInterval(() => {
+        setTimer(new Date().getTime() - initialTime.current);
       }, 1);
-      if (win) {
-        clearInterval(timerId);
-        setCounterTime(formatTime(timer));
-      }
-      return () => clearInterval(timerId);
+      return () => {
+        clearInterval(intervalId.current);
+      };
     }
-  }, [timer, win, loading]);
+  }, [loading, initialTime]);
 
   return (
     <div className="timer">
