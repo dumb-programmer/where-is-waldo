@@ -1,20 +1,18 @@
 import React from "react";
 
 const ListItem = ({
-  caption,
+  character_name,
   characters,
   setCharacters,
   index,
   relativeCoords,
-  setWin,
   setShowFound,
   setShowError,
   data,
-  setCharacterName,
+  setFoundCharacterName,
 }) => {
   const onClick = () => {
-    const character = characters[index].name;
-    const position_of_character = data[character];
+    const position_of_character = data[character_name];
 
     let match = false;
     for (const position of position_of_character) {
@@ -28,14 +26,14 @@ const ListItem = ({
 
         setCharacters(newCharacters);
 
-        setCharacterName(character);
+        setFoundCharacterName(character_name);
       }
     }
     if (!match) {
       setShowError(true);
     }
   };
-  return <li onClick={onClick}>{caption}</li>;
+  return <li onClick={onClick}>{character_name}</li>;
 };
 
 export default ListItem;

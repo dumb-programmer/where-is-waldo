@@ -10,7 +10,7 @@ const DropDown = ({
   data,
   setShowFound,
   setShowError,
-  setCharacterName,
+  setFoundCharacterName,
 }) => {
   return (
     <ul className="drop-down">
@@ -19,7 +19,7 @@ const DropDown = ({
           !character.found && (
             <ListItem
               key={character.id}
-              caption={character.name}
+              character_name={character.name}
               index={index}
               characters={characters}
               setCharacters={setCharacters}
@@ -28,7 +28,7 @@ const DropDown = ({
               setShowFound={setShowFound}
               setShowError={setShowError}
               data={data}
-              setCharacterName={setCharacterName}
+              setFoundCharacterName={setFoundCharacterName}
             />
           )
       )}

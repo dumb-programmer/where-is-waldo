@@ -11,7 +11,7 @@ const Cursor = ({
   setCharacters,
   setShowFound,
   setShowError,
-  setCharacterName
+  setFoundCharacterName
 }) => {
   const { x, y } = coordinates;
 
@@ -44,7 +44,7 @@ const Cursor = ({
           data={data}
           setShowFound={setShowFound}
           setShowError={setShowError}
-          setCharacterName={setCharacterName}
+          setFoundCharacterName={setFoundCharacterName}
         />
       )}
     </div>

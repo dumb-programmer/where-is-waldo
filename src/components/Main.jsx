@@ -22,7 +22,7 @@ const Main = ({
   const [showFound, setShowFound] = useState(false);
   const [showError, setShowError] = useState(false);
   const [data, setData] = useState([]);
-  const [characterName, setCharacterName] = useState("");
+  const [foundCharacterName, setFoundCharacterName] = useState("");
   const [relativeCoords, setRelativeCoords] = useState({ x: 0, y: 0 });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const imgRef = useRef();
@@ -143,12 +143,15 @@ const Main = ({
           setCharacters={setCharacters}
           setShowFound={setShowFound}
           setShowError={setShowError}
-          setCharacterName={setCharacterName}
+          setFoundCharacterName={setFoundCharacterName}
         />
       )}
       {showError && <Feedback error={true} setShowError={setShowError} />}
       {showFound && (
-        <Feedback setShowFound={setShowFound} characterName={characterName} />
+        <Feedback
+          setShowFound={setShowFound}
+          characterName={foundCharacterName}
+        />
       )}
     </main>
   );

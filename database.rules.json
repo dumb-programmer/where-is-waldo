@@ -1,6 +1,14 @@
 {
   "rules": {
-    ".read": true,
-    ".write": false
+    "characters":{
+      ".read": "auth.uid != null",
+    	".write": false
+    },
+
+    "leaderboard":{
+      ".read": "auth.uid != null",
+    	".write": "auth.uid != null"
+    }
   }
 }
+
